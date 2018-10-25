@@ -1540,7 +1540,7 @@ public class S3ProxyHandler {
             response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
             String corsMethod = request.getHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD);
             if (corsMethod != null) {
-                response.addHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, corsMethod);
+                response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, corsMethod);
             }
         }
 
