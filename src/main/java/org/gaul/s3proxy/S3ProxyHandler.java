@@ -730,7 +730,7 @@ public class S3ProxyHandler {
                 return;
             }
         case "OPTIONS":
-            handleBlobCORS(request, response, blobStore, path[1],
+            handleOptionsBlob(request, response, blobStore, path[1],
                         path[2]);
             return;
         default:
@@ -1523,7 +1523,7 @@ public class S3ProxyHandler {
         addMetadataToResponse(request, response, metadata);
     }
 
-    private void handleBlobCORS(HttpServletRequest request,
+    private void handleOptionsBlob(HttpServletRequest request,
             HttpServletResponse response,
             BlobStore blobStore, String containerName,
             String blobName) throws IOException, S3Exception {
@@ -1536,6 +1536,7 @@ public class S3ProxyHandler {
 
         // TODO Get the CORS Headers from the blobstore
         // TODO Evaluate allowed Origins based on meta from blobstore
+        // TODO Addtional CORS Header Access-Control-Max-Age, Access-Control-Allow-Headers, Access-Control-Expose-Headers
         if (corsAllowAll) {
             response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
             String corsMethod = request.getHeader(HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD);

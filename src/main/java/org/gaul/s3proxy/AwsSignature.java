@@ -319,8 +319,6 @@ final class AwsSignature {
             S3Exception {
         String canonicalRequest = createCanonicalRequest(request, uri, payload,
                 authHeader.hashAlgorithm);
-
-
         String algorithm = authHeader.hmacAlgorithm;
         byte[] dateKey = signMessage(
                 authHeader.date.getBytes(StandardCharsets.UTF_8),
